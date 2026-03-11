@@ -7,6 +7,8 @@
 
 Plataforma web para **compra, venda e revenda segura de ingressos para eventos**.
 
+[![Documentação](https://img.shields.io/badge/Documentação-2684fc?style=for-the-badge&logo=GoogleDocs&logoColor=white)](https://drive.google.com/drive/folders/1KSKbBCBgsfLiwjxWK-w6NgDC-e9ORPXl?usp=drive_link)
+
 ---
 
 # 📚 Sumário
