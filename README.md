@@ -93,6 +93,7 @@ O objetivo principal é **reduzir fraudes e garantir segurança na revenda de in
 - IntelliJ IDEA
 - Context Mapper
 - Figma
+- Excalidraw
 
 ---
 
@@ -142,97 +143,7 @@ project-root
 
 ---
 
-# 📦 ENTREGA 1
-
-## 📖 Descrição do Domínio
-
-O domínio do sistema consiste em um **marketplace digital de ingressos**, onde usuários podem comprar e revender ingressos para eventos.
-
-Entidades principais:
-
-- Usuário
-- Evento
-- Ingresso
-- Venda
-- Compra
-
----
-
-## 🧠 Linguagem Onipresente
-
-| Termo | Significado |
-|------|------|
-| Usuário | Pessoa cadastrada na plataforma |
-| Evento | Show ou espetáculo |
-| Ingresso | Bilhete digital |
-| Revenda | Venda de ingresso já comprado |
-| Compra | Aquisição de ingresso |
-
----
-
-## 🗺 Mapa de Histórias do Usuário
-
-**Como** usuário  
-**Quero** comprar um ingresso  
-**Para** participar de um evento
-
-**Como** usuário  
-**Quero** revender um ingresso  
-**Para** recuperar meu dinheiro
-
----
-
-## 🎨 Protótipos
-
-Protótipos desenvolvidos no **Figma**.
-
-Telas:
-
-- Login
-- Cadastro
-- Dashboard
-- Eventos
-- Compra de ingresso
-
----
-
-## 🧩 Modelagem com Context Mapper
-
-Arquivo localizado em:
-
-
-docs/context-mapper/model.cml
-
-
-Subdomínios:
-
-- Gestão de Usuários
-- Gestão de Eventos
-- Gestão de Ingressos
-- Marketplace de Revenda
-
----
-
-## 🧪 Cenários BDD
-
-Feature: Compra de ingresso
-
-Scenario: Usuário compra ingresso com sucesso
-Given que o usuário está logado
-And existe um evento disponível
-When o usuário compra um ingresso
-Then o sistema registra a compra
-
-
-## 🤖 Automação com Cucumber
-
-Estrutura:
-```
-tests
- └── bdd
-      ├── features
-      └── steps
-```
+## 📦 ENTREGA 1
       
 ## 📦 ENTREGA 2
 
