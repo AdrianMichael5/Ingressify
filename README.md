@@ -2,8 +2,9 @@
 
 Plataforma moderna de revenda de ingressos para eventos como shows, esportes, teatro e festivais.
 
-[![Documentacao](https://img.shields.io/badge/Documenta%C3%A7%C3%A3o-2684fc?style=for-the-badge&logo=GoogleDocs&logoColor=white)](https://drive.google.com/drive/folders/1KSKbBCBgsfLiwjxWK-w6NgDC-e9ORPXl?usp=sharing)
+[![Funcionalides](https://img.shields.io/badge/Funcionalidades-2684fc?style=for-the-badge&logo=Jira&logoColor=white)](https://docs.google.com/document/d/10E0lmg1TXhXTNImnfr_dHNWsdPgd-4pHhoDSmXSdvS4/edit?usp=sharing)
 [![Prototipo](https://img.shields.io/badge/Prot%C3%B3tipo-ff3737?style=for-the-badge&logo=Figma&logoColor=white)](https://www.figma.com/design/3Gc8RsSGhEhj3RPWYtWOtR/tela1?node-id=0-1&t=LGj0eHlOM8FhldNn-1)
+[![Documentacao](https://img.shields.io/badge/Documenta%C3%A7%C3%A3o-2684fc?style=for-the-badge&logo=GoogleDocs&logoColor=white)](https://drive.google.com/drive/folders/1KSKbBCBgsfLiwjxWK-w6NgDC-e9ORPXl?usp=sharing)
 
 ---
 
