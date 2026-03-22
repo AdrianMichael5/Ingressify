@@ -1,7 +1,5 @@
-package com.tickethub.controller;
+package com.ingressify.event;
 
-import com.tickethub.dto.EventResponse;
-import com.tickethub.service.EventService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

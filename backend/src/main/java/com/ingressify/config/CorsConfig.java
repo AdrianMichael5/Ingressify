@@ -1,4 +1,4 @@
-package com.tickethub.config;
+package com.ingressify.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

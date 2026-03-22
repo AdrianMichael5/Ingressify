@@ -1,12 +1,7 @@
-package com.tickethub.service;
+package com.ingressify.auth;
 
-import com.tickethub.config.JwtService;
-import com.tickethub.dto.AuthResponse;
-import com.tickethub.dto.LoginRequest;
-import com.tickethub.dto.RegisterRequest;
-import com.tickethub.entity.User;
-import com.tickethub.exception.EmailAlreadyExistsException;
-import com.tickethub.repository.UserRepository;
+import com.ingressify.user.User;
+import com.ingressify.user.UserRepository;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;

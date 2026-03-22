@@ -1,4 +1,4 @@
-package com.tickethub.dto;
+package com.ingressify.event;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;

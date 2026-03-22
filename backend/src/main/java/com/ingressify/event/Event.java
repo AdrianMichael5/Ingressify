@@ -1,4 +1,4 @@
-package com.tickethub.entity;
+package com.ingressify.event;
 
 import jakarta.persistence.*;
 

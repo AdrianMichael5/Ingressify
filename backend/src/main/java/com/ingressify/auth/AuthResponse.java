@@ -1,4 +1,4 @@
-package com.tickethub.dto;
+package com.ingressify.auth;
 
 public class AuthResponse {
 

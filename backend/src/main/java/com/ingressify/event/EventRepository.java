@@ -1,6 +1,5 @@
-package com.tickethub.repository;
+package com.ingressify.event;
 
-import com.tickethub.entity.Event;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

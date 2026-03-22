@@ -1,6 +1,6 @@
-package com.tickethub.exception;
+package com.ingressify.exception;
 
-import com.tickethub.dto.ErrorResponse;
+import com.ingressify.auth.EmailAlreadyExistsException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.BadCredentialsException;

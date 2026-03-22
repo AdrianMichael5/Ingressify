@@ -1,12 +1,12 @@
-package com.tickethub;
+package com.ingressify;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class TicketHubApplication {
+public class IngressifyApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(TicketHubApplication.class, args);
+        SpringApplication.run(IngressifyApplication.class, args);
     }
 }

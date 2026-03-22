@@ -1,4 +1,4 @@
-package com.tickethub.dto;
+package com.ingressify.exception;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 

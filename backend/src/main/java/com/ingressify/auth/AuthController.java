@@ -1,9 +1,5 @@
-package com.tickethub.controller;
+package com.ingressify.auth;
 
-import com.tickethub.dto.AuthResponse;
-import com.tickethub.dto.LoginRequest;
-import com.tickethub.dto.RegisterRequest;
-import com.tickethub.service.AuthService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

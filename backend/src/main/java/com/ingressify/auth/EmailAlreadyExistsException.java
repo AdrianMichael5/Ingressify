@@ -1,4 +1,4 @@
-package com.tickethub.exception;
+package com.ingressify.auth;
 
 public class EmailAlreadyExistsException extends RuntimeException {
 

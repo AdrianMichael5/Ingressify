@@ -1,8 +1,5 @@
-package com.tickethub.service;
+package com.ingressify.event;
 
-import com.tickethub.dto.EventResponse;
-import com.tickethub.entity.Event;
-import com.tickethub.repository.EventRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

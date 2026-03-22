@@ -1,6 +1,7 @@
-package com.tickethub.config;
+package com.ingressify.config;
 
-import com.tickethub.repository.UserRepository;
+import com.ingressify.auth.JwtAuthenticationFilter;
+import com.ingressify.user.UserRepository;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Lazy;

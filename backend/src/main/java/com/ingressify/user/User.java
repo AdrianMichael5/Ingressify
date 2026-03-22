@@ -1,4 +1,4 @@
-package com.tickethub.entity;
+package com.ingressify.user;
 
 import jakarta.persistence.*;
 import org.springframework.security.core.GrantedAuthority;
