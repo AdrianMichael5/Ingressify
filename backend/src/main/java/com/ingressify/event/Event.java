@@ -1,5 +1,6 @@
 package com.ingressify.event;
 
+import com.ingressify.user.User;
 import jakarta.persistence.*;
 
 import java.math.BigDecimal;
@@ -35,91 +36,66 @@ public class Event {
 
     private Boolean available = true;
 
-    public Event() {
-    }
+    @Column(nullable = false)
+    private String status = "PUBLISHED";
 
-    public Event(Long id, String name, String description, String location, String imageUrl,
-                 LocalDateTime date, BigDecimal price, String category, Boolean available) {
-        this.id = id;
-        this.name = name;
-        this.description = description;
-        this.location = location;
-        this.imageUrl = imageUrl;
-        this.date = date;
-        this.price = price;
-        this.category = category;
-        this.available = available;
-    }
+    private String city;
+    private String state;
 
-    public Long getId() {
-        return id;
-    }
+    @Column(name = "total_tickets", nullable = false)
+    private Integer totalTickets = 100;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+    @Column(name = "sold_tickets", nullable = false)
+    private Integer soldTickets = 0;
 
-    public String getName() {
-        return name;
-    }
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "seller_id")
+    private User seller;
 
-    public void setName(String name) {
-        this.name = name;
-    }
+    public Event() {}
 
-    public String getDescription() {
-        return description;
-    }
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
+    public String getName() { return name; }
+    public void setName(String name) { this.name = name; }
 
-    public String getLocation() {
-        return location;
-    }
+    public String getDescription() { return description; }
+    public void setDescription(String description) { this.description = description; }
 
-    public void setLocation(String location) {
-        this.location = location;
-    }
+    public String getLocation() { return location; }
+    public void setLocation(String location) { this.location = location; }
 
-    public String getImageUrl() {
-        return imageUrl;
-    }
+    public String getImageUrl() { return imageUrl; }
+    public void setImageUrl(String imageUrl) { this.imageUrl = imageUrl; }
 
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
-    }
+    public LocalDateTime getDate() { return date; }
+    public void setDate(LocalDateTime date) { this.date = date; }
 
-    public LocalDateTime getDate() {
-        return date;
-    }
+    public BigDecimal getPrice() { return price; }
+    public void setPrice(BigDecimal price) { this.price = price; }
 
-    public void setDate(LocalDateTime date) {
-        this.date = date;
-    }
+    public String getCategory() { return category; }
+    public void setCategory(String category) { this.category = category; }
 
-    public BigDecimal getPrice() {
-        return price;
-    }
+    public Boolean getAvailable() { return available; }
+    public void setAvailable(Boolean available) { this.available = available; }
 
-    public void setPrice(BigDecimal price) {
-        this.price = price;
-    }
+    public String getStatus() { return status; }
+    public void setStatus(String status) { this.status = status; }
 
-    public String getCategory() {
-        return category;
-    }
+    public String getCity() { return city; }
+    public void setCity(String city) { this.city = city; }
 
-    public void setCategory(String category) {
-        this.category = category;
-    }
+    public String getState() { return state; }
+    public void setState(String state) { this.state = state; }
 
-    public Boolean getAvailable() {
-        return available;
-    }
+    public Integer getTotalTickets() { return totalTickets; }
+    public void setTotalTickets(Integer totalTickets) { this.totalTickets = totalTickets; }
 
-    public void setAvailable(Boolean available) {
-        this.available = available;
-    }
+    public Integer getSoldTickets() { return soldTickets; }
+    public void setSoldTickets(Integer soldTickets) { this.soldTickets = soldTickets; }
+
+    public User getSeller() { return seller; }
+    public void setSeller(User seller) { this.seller = seller; }
 }
