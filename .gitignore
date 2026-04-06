@@ -1,6 +1,3 @@
-# Claude
-.claude/
-
 # Backend
 backend/target/
 backend/*.iml
