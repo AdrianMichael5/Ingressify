@@ -1,0 +1,306 @@
+Domain Igressify {
+	Subdomain Marketplace
+	Subdomain Moderacao
+	Subdomain Denuncia
+	Subdomain Pagamento
+	Subdomain Identidade
+	Subdomain Notificacao
+}
+
+ContextMap {
+	contains Marketplace
+	contains Moderacao
+	contains Denuncias
+	contains Pagamentos
+	contains Identidade
+	contains Notificacoes
+
+	// Marketplace manda indiretamente no contrato — Pagamentos e Moderação se adaptam.
+
+	Marketplace Customer-Supplier Pagamentos
+	Marketplace Customer-Supplier Moderacao
+
+	Denuncias Partnership Moderacao // se Denuncias
+
+	// Notificações se adapta totalmente ao Marketplace, Pagamentos, Moderação e Denuncias
+	Notificacoes -> Marketplace : Conformist
+	Notificacoes -> Pagamentos : Conformist
+	Notificacoes -> Moderacao : Conformist
+	Notificacoes -> Denuncias : Conformist
+
+	// Marketplace se adapta a Identidade(Cadastro, Login), Denuncias, Moderação e Pagamentos
+	Marketplace -> Identidade : Conformist
+	Marketplace -> Denuncias : Conformist
+	Marketplace -> Moderacao : Conformist
+	Marketplace -> Pagamentos : Conformist
+}
+
+BoundedContext Marketplace implements Marketplace {
+
+	Aggregate Usuario {
+		Entity Usuario {
+			aggregateRoot
+
+			-UsuarioId id
+			String nome
+			boolean podeAnunciar
+		}
+
+		ValueObject UsuarioId {
+			String id
+		}
+	}
+
+	Aggregate Evento {
+		Entity Evento {
+			aggregateRoot
+
+			-EventoId id
+			String nome
+			Date data
+			-Endereco local
+			String imagemUrl
+		}
+
+		ValueObject EventoId {
+			String id
+		}
+
+		ValueObject Endereco {
+			String rua
+			String numero
+			String cidade
+			String estado
+			String cep
+			String pais
+		}
+	}
+
+	Aggregate Anuncio {
+
+		DomainEvent AnuncioCriado
+		DomainEvent AnuncioAprovado
+		DomainEvent AnuncioRejeitado
+		DomainEvent AnuncioSuspenso
+
+		Entity Anuncio {
+			aggregateRoot
+
+			-AnuncioId id
+			-UsuarioId vendedor
+			-EventoId evento
+			int quantidade
+			- StatusAnuncio status
+			int preco
+			String categoria
+			String descricao
+
+			def @AnuncioCriado criar();
+			def @AnuncioSuspenso suspender();
+		}
+
+		ValueObject AnuncioId {
+			String id
+		}
+
+		enum StatusAnuncio {
+			PENDENTE,
+			APROVADO,
+			REJEITADO,
+			SUSPENSO
+		}
+	}
+
+	Aggregate Pedido {
+
+		DomainEvent PedidoCriado
+		DomainEvent PedidoPago
+		DomainEvent PedidoConcluido
+
+		Entity Pedido {
+			aggregateRoot
+
+			-PedidoId id
+			-UsuarioId comprador
+			-AnuncioId anuncio
+			int quantidade
+			- StatusPedido status
+			- Reserva reserva
+
+			def @PedidoCriado criar();
+			def @PedidoPago confirmarPagamento();
+			def @PedidoConcluido concluir();
+		}
+
+		ValueObject PedidoId {
+			String id
+		}
+
+		ValueObject Reserva {
+			Date expiraEm
+			int quantidade
+		}
+
+		enum StatusPedido {
+			CRIADO,
+			AGUARDANDO_PAGAMENTO,
+			PAGO,
+			CONCLUIDO,
+			CANCELADO
+		}
+	}
+
+	Aggregate Transferencia {
+
+		DomainEvent IngressoTransferido
+
+		Entity Transferencia {
+			aggregateRoot
+
+			-TransferenciaId id
+			-PedidoId pedido
+			String comprovante
+			boolean confirmado
+		}
+
+		ValueObject TransferenciaId {
+			String id
+		}
+	}
+
+	Aggregate Avaliacao {
+		Entity Avaliacao {
+			aggregateRoot
+
+			-AvaliacaoId id
+			-UsuarioId autor
+			-UsuarioId avaliado
+			int nota
+			String comentario
+		}
+
+		ValueObject AvaliacaoId {
+			String id
+		}
+	}
+}
+
+BoundedContext Pagamentos implements Pagamento {
+
+	Aggregate Pagamento {
+
+		DomainEvent PagamentoAprovado
+		DomainEvent PagamentoRecusado
+
+		Entity Pagamento {
+			aggregateRoot
+
+			-PagamentoId id
+			-PedidoId pedido
+			-StatusPagamento status
+		}
+
+		ValueObject PagamentoId {
+			String id
+		}
+
+		enum StatusPagamento {
+			PENDENTE,
+			APROVADO,
+			RECUSADO
+		}
+	}
+}
+
+BoundedContext Moderacao implements Moderacao {
+
+	Aggregate RevisaoAnuncio {
+
+		Entity RevisaoAnuncio {
+			aggregateRoot
+
+			-RevisaoId id
+			-AnuncioId anuncio
+			-StatusRevisao status
+		}
+
+		ValueObject RevisaoId {
+			String id
+		}
+
+		enum StatusRevisao {
+			APROVADO,
+			REJEITADO,
+			SUSPENSO
+		}
+	}
+
+	Aggregate Permissao {
+
+		Entity Permissao {
+			aggregateRoot
+
+			-UsuarioId usuario
+			boolean podeAnunciar
+		}
+	}
+}
+
+BoundedContext Denuncias implements Denuncia {
+
+	Aggregate Denuncia {
+
+		DomainEvent DenunciaCriada
+		DomainEvent DenunciaResolvida
+
+		Entity Denuncia {
+			aggregateRoot
+
+			-DenunciaId id
+			-UsuarioId autor
+			-UsuarioId alvoId // vendendo que fez o anuncio que o cliente está denunciando
+			-TipoAlvo tipo
+			String motivo
+			-StatusDenuncia status
+		}
+
+		ValueObject DenunciaId {
+			String id
+		}
+
+		enum TipoAlvo {
+			USUARIO,
+			ANUNCIO
+		}
+
+		enum StatusDenuncia {
+			ABERTA,
+			EM_ANALISE,
+			RESOLVIDA
+		}
+	}
+}
+
+BoundedContext Identidade implements Identidade {
+
+	Aggregate Conta {
+		Entity Conta {
+			aggregateRoot
+
+			-ContaId id
+			String emailConta
+			String senha
+		}
+
+		ValueObject ContaId {
+			String id
+		}
+	}
+}
+
+BoundedContext Notificacoes implements Notificacao {
+
+	Service NotificacaoService {
+		void notificarUsuario(@UsuarioId usuario, String mensagem);
+	}
+}
